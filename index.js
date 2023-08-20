@@ -73,7 +73,7 @@ const SensorData = mongoose.model('SensorData', sensorDataSchema);
 app.use(bodyParser.json());
 
 // Define an endpoint for receiving sensor data from NodeMCU
-app.post('/sensor-data', (req, res) => {
+app.post('/', (req, res) => {
     // Extract data from the request body
     const {
         sensorName,
