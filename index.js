@@ -47,6 +47,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 // Create an instance of Express.js
+app.set('view engine', 'ejs');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -90,6 +91,10 @@ app.post('/', (req, res) => {
     newData.save();
     
 });
+
+app.get('/', function (req, res) {
+         res.render('index');
+     });
 
 // Start the Express server
 app.listen(port, () => {
