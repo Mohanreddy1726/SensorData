@@ -18,12 +18,15 @@ db.once('open', function () {
 });
 
 const sensorDataSchema = {
-    sensorvalue: String
+    sensorName: String,
+    Data: Number,
+    timestamp: { type: Date, default: Date.now }
 }
 const sensordata = mongoose.model('sensordata', sensorDataSchema);
 app.post('/', function (req, res) {
     let newData = new sensordata ({
-        sensorvalue: req.body.sensorvalue,
+        sensorName: req.body.sensorName,
+        data: req.body.data
     });
     newData.save();
     res.redirect('/');
