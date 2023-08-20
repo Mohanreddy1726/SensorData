@@ -47,10 +47,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 // Create an instance of Express.js
-app.set('view engine', 'ejs');
+
 const app = express();
 const port = process.env.PORT || 3000;
-
+app.set('view engine', 'ejs');
 // Connect to your MongoDB database
 mongoose.connect('mongodb://localhost/sensorData', {
     useNewUrlParser: true,
