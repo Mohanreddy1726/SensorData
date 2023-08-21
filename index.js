@@ -6,6 +6,12 @@ const port = 3000; // Adjust the port as needed
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+mongoose.connect("mongodb+srv://mohananika123:Anika123@cluster0.kqje6p6.mongodb.net/Employeedb");
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+    console.log('Connected to MongoDB');
+});
 const SensorDataSchema = {
     httpRequestData: String
 }
