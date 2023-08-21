@@ -9,8 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Endpoint to handle incoming data
 app.post('/data', (req, res) => {
     // Retrieve data from the POST request
-    const { sensorName,
-        data } = req.body;
+    const { httpRequestData } = req.body;
 
     // Store or process the data as needed
     // For example, you can log it to the console
