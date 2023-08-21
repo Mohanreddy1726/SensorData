@@ -6,17 +6,24 @@ const port = 3000; // Adjust the port as needed
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const SensorDataSchema = {
+    httpRequestData: String
+}
+const sensordata = mongoose.model('sensordata', SensorDataSchema);
 // Endpoint to handle incoming data
 app.post('/data', (req, res) => {
     // Retrieve data from the POST request
     const { httpRequestData } = req.body;
-
+    let newData = new sensordata ({
+        httpRequestData
+    });
+newData.save();
     // Store or process the data as needed
     // For example, you can log it to the console
     console.log(`Sensor Name: ${sensorName}, Data: ${data}`);
 
     // Respond with a success message or any other required response
-    res.send('Data received successfully!');
+    res.send('<script>alert("Data sent for verification!"); window.location.href = "/";</script>');
 });
 
 app.get('/', function (req, res) {
