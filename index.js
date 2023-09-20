@@ -17,12 +17,16 @@ const sensorSchema = {
   sensorValue: String,
 }
 const sensor = mongoose.model('sensor', sensorSchema);
+app.post('/data', (req, res) => {
+  let newData = new sensor ({
+    sensorValue: req.query.value
+  });
+  newData.save();
+});
 app.get('/data', (req, res) => {
-  let newData = ({
-    sensorValue: req.query.value,
-  // console.log(`Received sensor data: ${sensorValue}`);
-  })  ;
-  newData.sensorValue();
+  const sensorValue = req.query.value;
+  console.log(sensorValue);
+  console.log(`Received sensor data: ${sensorValue}`);
   // Process the sensor data as needed
 
   res.sendStatus(200); // Send a response back to the Arduino
