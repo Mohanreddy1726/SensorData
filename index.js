@@ -1,21 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
-const port = 3000; // Change this to your desired port
+const port = 3000;
 
-// Middleware to parse JSON requests
-app.use(bodyParser.json());
+app.get('/data', (req, res) => {
+  const sensorValue = req.query.value;
+  console.log(`Received sensor data: ${sensorValue}`);
+  // Process the sensor data as needed
 
-// Handle POST requests with sensor data
-app.post('/sensor-data', (req, res) => {
-  const inc = req.body;
-  // Process sensor data here
-  console.log('Received sensor data:', inc);
-  res.sendStatus(200);
+  res.sendStatus(200); // Send a response back to the Arduino
 });
 
-// Start the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
