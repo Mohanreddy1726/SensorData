@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 // Handle POST requests with sensor data
 app.post('/sensor-data', (req, res) => {
-  const sensorData = req.body;
+  const inc = req.body;
   // Process sensor data here
   console.log('Received sensor data:', sensorData);
   res.sendStatus(200);
